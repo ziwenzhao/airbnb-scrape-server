@@ -5,56 +5,77 @@ from flask import Response
 from flask import jsonify
 from time import sleep
 import os
-import logging
 import subprocess
 import uuid
+import logging
 from exception_model import InvalidUsage
 
 app = Flask(__name__)
 
-logger = logging.getLogger(__name__)
+app.logger.setLevel(logging.INFO)
+
 
 @app.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
-    logger.info('scrape_homes start')
+    
     if request.form.get('url') is None or request.form.get('max_page_number') is None:
-        raise InvalidUsage(message='request body missed parameters. The paramters of url and max_page_number are required', status_code=422)
+        raise InvalidUsage(message='request body missed parameters. The paramters of url and max_page_number are required',\
+                           status_code=422, payload={'url': '/scrape_homes', 'method': 'post'})
     job_id = uuid.uuid1()
     try:
-        subprocess.call('cd ./airbnb\ homes\ scrape && scrapy crawl home -a url="' + request.form.get('url') + '" -a max_page_number=' \
+        app.logger.info('start scrape homes')
+        subprocess.check_output('cd ./airbnb\ homes\ scrape && scrapy crawl home -a url="' + request.form.get('url') + '" -a max_page_number=' \
                         + request.form.get('max_page_number') + ' -t json -o -> home_' + str(job_id) + '.json', shell=True)
+        app.logger.info('scrape homes done')
         return {'job_id': job_id}
     except Exception as e:
+        app.logger.error('scrape homes error: ' + str(e))
         raise InvalidUsage(message=str(e), status_code=500)
+
+
+
 
 @app.route('/get_homes', methods=['get'])
 def get_homes():
     job_id = request.args.get('job_id') 
     if job_id is None:
-        raise InvalidUsage(message='request missed query parameters. The paramters of job_id is necessary', status_code=422)
+        raise InvalidUsage(message='request missed query parameters. The paramters of job_id is necessary',\
+                           status_code=422, payload={'url': '/get_homes', 'method':'get'})
     try:
+        app.logger.info('open file: ./airbnb homes scrape/home_' + job_id + '.json')
         with open('./airbnb homes scrape/home_' + job_id + '.json' ) as file:
             return file.read()
     except Exception as e:
+        app.logger.error('file: ./airbnb homes scrape/home_' + job_id + '.json open failed: ' + str(e))
         raise InvalidUsage(message=str(e), status_code=404)
+
+
+
 
 @app.route('/delete_file', methods=['delete'])
 def delete_file():
     job_id = request.args.get('job_id')
     if job_id is None:
-        raise InvalidUsage(message='request missed query parameters. The paramters of job_id is necessary', status_code=422)
+        raise InvalidUsage(message='request missed query parameters. The paramters of job_id is necessary',\
+                           status_code=422, payload={'url': '/delete_file', 'method':'delete'})
     file_path = './airbnb homes scrape/home_' + job_id + '.json'
     if os.path.exists(file_path):
+        app.logger.info('file exists, will be removed')
         os.remove(file_path)
+        app.logger.info('file removed')
         return 'File removed.'
     else:
+        app.logger.info('file does not exist')
         return 'file does not exist'
-        
+
+
 
 @app.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
+    logging_dict = error.to_dict()
+    logging_dict['status_code'] = error.status_code
+    app.logger.error(logging_dict)
     return response
-
 
