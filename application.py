@@ -19,6 +19,10 @@ application.logger.setLevel(logging.INFO)
 
 clean_files_periodically(application)
 
+@application.route('/', methods = ['get'])
+def hello_world():
+    return 'Hello World'
+
 @application.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
     
