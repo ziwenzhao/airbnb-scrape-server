@@ -3,7 +3,6 @@ from flask import request
 from flask import abort
 from flask import Response
 from flask import jsonify
-print('applcaiton.py started')
 from time import sleep
 import os
 import subprocess
@@ -21,7 +20,7 @@ clean_files_periodically(application)
 
 @application.route('/', methods = ['get'])
 def hello_world():
-    return 'Hello World2'
+    return 'Hello World5'
 
 @application.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
