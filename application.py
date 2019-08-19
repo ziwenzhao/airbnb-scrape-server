@@ -20,7 +20,7 @@ clean_files_periodically(application)
 
 @application.route('/', methods = ['get'])
 def hello_world():
-    return 'Hello World5'
+    return 'Hello World6'
 
 @application.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
