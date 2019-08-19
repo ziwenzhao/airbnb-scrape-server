@@ -18,21 +18,22 @@ application.logger.setLevel(logging.INFO)
 
 clean_files_periodically(application)
 
-@application.route('/', methods = ['get'])
-def hello_world():
-    return 'Hello World6'
 
 @application.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
     
-    if request.form.get('url') is None or request.form.get('max_page_number') is None:
+    if request.form.get('url') is None:
         raise InvalidUsage(message='request body missed parameters. The paramters of url and max_page_number are required',\
                            status_code=422, payload={'url': '/scrape_homes', 'method': 'post'})
     job_id = uuid.uuid1()
     try:
         application.logger.info('start scrape homes')
-        subprocess.check_output('cd ./airbnb\ homes\ scrape && scrapy crawl home -a url="' + request.form.get('url') + '" -a max_page_number=' \
-                        + request.form.get('max_page_number') + ' -t json -o -> home_' + str(job_id) + '.json', shell=True)
+        
+        url_argument = ' -a url="' + request.form.get('url') + '"'
+        max_page_number_argument = ' -a max_page_number=' + request.form.get('max_page_number') if request.form.get('max_page_number') is not None else ''
+        subprocess.check_output('cd ./airbnb\ homes\ scrape && scrapy crawl home' + url_argument +\
+                                max_page_number_argument + ' -t json -o -> home_' + str(job_id) + '.json', shell=True)
+        
         application.logger.info('scrape homes done')
         return {'job_id': job_id}
     except Exception as e:
