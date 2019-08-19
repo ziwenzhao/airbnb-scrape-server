@@ -1,0 +1,148 @@
+[INFO  - 2019-08-18T23:11:45.994Z] GhostDriver - Main - running on port 55250
+[INFO  - 2019-08-18T23:11:46.914Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2019-08-18T23:11:46.914Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.customHeaders:  - {}
+[INFO  - 2019-08-18T23:11:46.914Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2019-08-18T23:11:46.914Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 8d18ffe0-c20d-11e9-945d-7104c7ad1aa3
+[ERROR - 2019-08-18T23:11:52.224Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - msg: NotSupportedError: DOM Exception 9: The implementation did not support the requested type of object or operation.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:11:52.225Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - stack:
+  createContextualFragment (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  l (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  forEach (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  apply (:0)
+  call (:0)
+  call (:0)
+  Call (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Z (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  dispatchEvent (:0)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  LoadBanner (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Init (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  n (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  run (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  h (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:11:55.320Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1566169915292
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:01.825Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - msg: NotSupportedError: DOM Exception 9: The implementation did not support the requested type of object or operation.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:01.825Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - stack:
+  createContextualFragment (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  l (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  forEach (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  apply (:0)
+  call (:0)
+  call (:0)
+  Call (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Z (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  dispatchEvent (:0)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  LoadBanner (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Init (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  n (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  run (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  h (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:06.971Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - msg: NotSupportedError: DOM Exception 9: The implementation did not support the requested type of object or operation.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:06.972Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - stack:
+  createContextualFragment (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  l (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  forEach (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  apply (:0)
+  call (:0)
+  call (:0)
+  Call (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Z (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  dispatchEvent (:0)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  LoadBanner (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Init (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  n (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  run (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  h (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:25.669Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - msg: NotSupportedError: DOM Exception 9: The implementation did not support the requested type of object or operation.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:25.669Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - stack:
+  createContextualFragment (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  l (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  forEach (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  apply (:0)
+  call (:0)
+  call (:0)
+  Call (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Z (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  dispatchEvent (:0)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  LoadBanner (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Init (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  n (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  run (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  h (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:29.315Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - msg: NotSupportedError: DOM Exception 9: The implementation did not support the requested type of object or operation.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-08-18T23:12:29.315Z] Session [8d18ffe0-c20d-11e9-945d-7104c7ad1aa3] - page.onError - stack:
+  createContextualFragment (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  l (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  forEach (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  apply (:0)
+  call (:0)
+  call (:0)
+  Call (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Z (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  dispatchEvent (:0)
+  value (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  LoadBanner (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  Init (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/Header_OneTrustWrapper-7c0cdc8f.js:1)
+  n (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  (anonymous function) (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  run (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+  h (https://a0.muscache.com/airbnb/static/packages/shims_pre_modules-5ce64dd8.js:1)
+
+  phantomjs://platform/console++.js:263 in error
