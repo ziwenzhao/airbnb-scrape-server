@@ -3,6 +3,7 @@ from flask import request
 from flask import abort
 from flask import Response
 from flask import jsonify
+from flask_cors import CORS
 from time import sleep
 import os
 import subprocess
@@ -13,6 +14,7 @@ from maintain_files import clean_files_periodically
 
 
 application = Flask(__name__)
+CORS(application, resources={r'.*': {'origins': 'http://localhost:4200'}})
 
 application.logger.setLevel(logging.INFO)
 
@@ -21,25 +23,25 @@ clean_files_periodically(application)
 
 @application.route('/scrape_homes', methods = ['post'])
 def scrape_homes():
-    
-    if request.form.get('url') is None:
-        raise InvalidUsage(message='request body missed parameters. The paramters of url and max_page_number are required',\
+    if request.json is not None and request.json.get('url') is not None:
+        job_id = uuid.uuid1()
+        try:
+            application.logger.info('start scrape homes')
+            
+            url_argument = ' -a url="' + request.json.get('url') + '"'
+            max_page_number = request.json.get('max_page_number')
+            max_page_number_argument = ' -a max_page_number=' + str(max_page_number) if max_page_number is not None else ''
+            subprocess.check_output('cd ./airbnb\ homes\ scrape && scrapy crawl home' + url_argument +\
+                                    max_page_number_argument + ' -t json -o -> home_' + str(job_id) + '.json', shell=True)
+            
+            application.logger.info('scrape homes done')
+            return {'job_id': job_id}
+        except Exception as e:
+            application.logger.error('scrape homes error: ' + str(e))
+            raise InvalidUsage(message=str(e), status_code=500)
+    else:
+        raise InvalidUsage(message='request body missed parameters. The paramters of url is required',\
                            status_code=422, payload={'url': '/scrape_homes', 'method': 'post'})
-    job_id = uuid.uuid1()
-    try:
-        application.logger.info('start scrape homes')
-        
-        url_argument = ' -a url="' + request.form.get('url') + '"'
-        max_page_number_argument = ' -a max_page_number=' + request.form.get('max_page_number') if request.form.get('max_page_number') is not None else ''
-        subprocess.check_output('cd ./airbnb\ homes\ scrape && scrapy crawl home' + url_argument +\
-                                max_page_number_argument + ' -t json -o -> home_' + str(job_id) + '.json', shell=True)
-        
-        application.logger.info('scrape homes done')
-        return {'job_id': job_id}
-    except Exception as e:
-        application.logger.error('scrape homes error: ' + str(e))
-        raise InvalidUsage(message=str(e), status_code=500)
-
 
 
 @application.route('/get_homes', methods=['get'])
