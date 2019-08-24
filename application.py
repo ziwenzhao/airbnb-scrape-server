@@ -14,7 +14,7 @@ from maintain_files import clean_files_periodically
 
 
 application = Flask(__name__)
-CORS(application, resources={r'.*': {'origins': 'http://localhost:4200'}})
+CORS(application)
 
 application.logger.setLevel(logging.INFO)
 
