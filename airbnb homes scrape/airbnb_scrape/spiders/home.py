@@ -33,6 +33,9 @@ class HomeSpider(scrapy.Spider):
         review_count = home_selector.xpath('.//div[@class="_10qgzd5i"]/following-sibling::span[@class="_krjbj"]/text()').get()
         if review_count is not None:
             return int(review_count.split()[0])
+        review_count = home_selector.xpath('.//div[@class="_1lqf9qr0"]/following-sibling::span[@class="_krjbj"]/text()').get()
+        if review_count is not None:
+            return int(review_count.split()[0])
         review_count = home_selector.xpath('.//span[@class="_q27mtmr"]/following-sibling::span[@class="_krjbj"]/text()').get()
         if review_count is not None:
             return int(review_count.split()[0])
