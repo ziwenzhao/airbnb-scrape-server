@@ -4,7 +4,7 @@ import time
 import threading
 
 EXPIRE_TIME = 10 * 60 ## Expire Time For JSON Files
-CLEAN_FILES_INTERVAL = 1 * 60  ## The interval of home json files cleaning task
+CLEAN_FILES_INTERVAL = 6 * 60 * 60  ## The interval of home json files cleaning task
 
 def clean_files_periodically(application):
     application.logger.info('search all home json files')
