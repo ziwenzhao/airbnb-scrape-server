@@ -19,6 +19,14 @@ class HomeSpider(scrapy.Spider):
     allowed_domains = ['www.airbnb.ca']
     start_urls = ['http://www.airbnb.ca']
 
+    def get_home_type(self, home_selector):
+        home_type = home_selector.xpath('.//div[@class="_1j3840rv"]/text()').get()
+        if home_type is not None:
+            return home_type
+        home_type = home_selector.xpath('.//div[@class="_1q6rrz5"]/text()').get()
+        if home_type is not None:
+            return home_type
+        return None
 
     def get_rating(self, home_selector):
         rating = home_selector.xpath('.//div[@class="_tghtxy2"]/text()').get()
@@ -26,7 +34,10 @@ class HomeSpider(scrapy.Spider):
             return float(rating)
         rating = home_selector.xpath('.//span[@class="_rs3rozr"]/@aria-label').get()
         if rating is not None:
-            return rating.split()[1]
+            return float(rating.split()[1])
+        rating = home_selector.xpath('.//span[@class="_60hvkx2"]/span[@class="_ky9opu0"]/text()').get()
+        if rating is not None:
+            return float(rating)
         return None
 
     def get_review_count(self, home_selector):
@@ -39,10 +50,13 @@ class HomeSpider(scrapy.Spider):
         review_count = home_selector.xpath('.//span[@class="_q27mtmr"]/following-sibling::span[@class="_krjbj"]/text()').get()
         if review_count is not None:
             return int(review_count.split()[0])
+        review_count = home_selector.xpath('.//span[@class="_ky9opu0"]/following-sibling::span[@class="_krjbj"]/text()').get()
+        if review_count is not None:
+            return int(review_count.split()[0])
         return None
 
     def get_price(self, home_selector):
-        price_text = home_selector.xpath('.//span[@class="_1p3joamp"]/span[@class="_krjbj"]/following-sibling::text()').get()
+        price_text = home_selector.xpath('.//span[@class="_1p7iugi"]/span[@class="_krjbj"]/following-sibling::text()').get()
         if price_text is not None:
             return re.search(r'\d+', price_text).group()
         else:
@@ -145,15 +159,15 @@ class HomeSpider(scrapy.Spider):
 
             ## Scrape all home items in the current page
             for index, home_selector in enumerate(home_selectors):
-                home_type = home_selector.xpath('.//span[@class="_1xxanas2"]/span/text()').get()
-                description = home_selector.xpath('.//div[@class="_1dss1omb"]/text()').get()
-                room = u'\u00B7'.join(home_selector.xpath('.//div[@class="_1jlnvra2"]/div/text()').getall())
-                amenity = u'\u00B7'.join(home_selector.xpath('.//div[@class="_1jlnvra2"]/text()').getall())
+                home_type = self.get_home_type(home_selector)
+                description = home_selector.xpath('.//div[@class="_1ebt2xej"]/text()').get()
+                room = ''.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1s7voim"])[1]/text()').getall())
+                amenity = ''.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1s7voim"])[2]/text()').getall())
                 rating = self.get_rating(home_selector)
                 review_count = self.get_review_count(home_selector)
                 price = self.get_price(home_selector)
                 is_new = True if home_selector.xpath('.//span[@class="_1p2weln"][contains(., "NEW")]').get() is not None else False
-                is_superhost = True if home_selector.xpath('.//span[@class="_1plk0jz1"][contains(., "Superhost")]').get() is not None else False
+                is_superhost = True if home_selector.xpath('.//span[@class="_1a31dx8f"][contains(., "SUPERHOST")]').get() is not None else False
                 image = self.get_image(home_selector)
                 detail_page = self.driver.find_element_by_xpath('(//div[@class="_8ssblpx"])[' + str(index + 1) +']//a').get_attribute('href')
                 home_item = AirbnbScrapeItem(home_type = home_type, description = description, room = room, amenity = amenity, rating = rating, review_count = review_count,\
