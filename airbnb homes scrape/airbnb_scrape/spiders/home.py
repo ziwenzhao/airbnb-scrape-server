@@ -26,6 +26,12 @@ class HomeSpider(scrapy.Spider):
         home_type = home_selector.xpath('.//div[@class="_1q6rrz5"]/text()').get()
         if home_type is not None:
             return home_type
+        home_type = home_selector.xpath('.//div[@class="_dr3g77n"]/text()').get()
+        if home_type is not None:
+            return home_type
+        home_type = home_selector.xpath('.//div[@class="_15w8m6q"]/text()').get()
+        if home_type is not None:
+            return home_type
         return None
 
     def get_rating(self, home_selector):
@@ -36,6 +42,9 @@ class HomeSpider(scrapy.Spider):
         if rating is not None:
             return float(rating.split()[1])
         rating = home_selector.xpath('.//span[@class="_60hvkx2"]/span[@class="_ky9opu0"]/text()').get()
+        if rating is not None:
+            return float(rating)
+        rating = home_selector.xpath('.//span[@class="_3zgr580"]/text()').get()
         if rating is not None:
             return float(rating)
         return None
@@ -51,6 +60,9 @@ class HomeSpider(scrapy.Spider):
         if review_count is not None:
             return int(review_count.split()[0])
         review_count = home_selector.xpath('.//span[@class="_ky9opu0"]/following-sibling::span[@class="_krjbj"]/text()').get()
+        if review_count is not None:
+            return int(review_count.split()[0])
+        review_count = home_selector.xpath('.//span[@class="_3zgr580"]/following-sibling::span[@class="_krjbj"]/text()').get()
         if review_count is not None:
             return int(review_count.split()[0])
         return None
@@ -160,9 +172,9 @@ class HomeSpider(scrapy.Spider):
             ## Scrape all home items in the current page
             for index, home_selector in enumerate(home_selectors):
                 home_type = self.get_home_type(home_selector)
-                description = home_selector.xpath('.//div[@class="_1ebt2xej"]/text()').get()
-                room = ''.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1s7voim"])[1]/text()').getall())
-                amenity = ''.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1s7voim"])[2]/text()').getall())
+                description = home_selector.xpath('.//div[@class="_1jbo9b6h"]/text()').get()
+                room = u'\u00B7'.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1ulsev2"])[1]/text()').getall())
+                amenity = u'\u00B7'.join(home_selector.xpath('(.//div[@class="_6kiyebe"]/div[@class="_1ulsev2"])[2]/text()').getall())
                 rating = self.get_rating(home_selector)
                 review_count = self.get_review_count(home_selector)
                 price = self.get_price(home_selector)
@@ -182,7 +194,7 @@ class HomeSpider(scrapy.Spider):
 
             ## navigate to next apge
             try:
-                self.driver.get(self.driver.find_element_by_xpath('//li[not(@data-id)][@class="_r4n1gzb"]/a').get_attribute('href'))
+                self.driver.get(self.driver.find_element_by_xpath('//li[not(@data-id)][@class="_i66xk8d"]/a').get_attribute('href'))
                 self.logger.info('navigated to next page')
                 sleep(WAIT_FOR_PAGE_LOADING_TIME)
                 page_number += 1
